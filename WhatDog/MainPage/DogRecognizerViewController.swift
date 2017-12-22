@@ -12,8 +12,8 @@ import SnapKit
 class DogRecognizerViewController: UIViewController, AVFrameExtractorDelegate, DogClassifierDelegate {
     
     let preview = AVCapturePreview()
-    var dogTypeLabel = UILabel()
-    var dogLabelContainer = UIView()
+    var dogTypeLabel:UILabel?
+    var dogLabelContainer: UIView?
 
     lazy var frameExtractor = AVFrameExtractor()
     lazy var dogClassifier = DogClassifier()
@@ -27,6 +27,7 @@ class DogRecognizerViewController: UIViewController, AVFrameExtractorDelegate, D
         frameExtractor.delegate = self
         dogClassifier.delegate = self
         setupAVPreview()
+        setupLabelView()
     }
     
     private func setupAVPreview(){
@@ -46,36 +47,33 @@ class DogRecognizerViewController: UIViewController, AVFrameExtractorDelegate, D
     // MARK :DogClassifierDelegate
     func didFinishClassificationWith(dogType: String?) {
         if let dogType = dogType{
-            setupLabelView(with:dogType)
+            dogTypeLabel?.text = dogType
+            dogLabelContainer?.isHidden = false
         }else{
-            removeLabelView()
+            dogLabelContainer?.isHidden = true
         }
     }
     
-    private func setupLabelView(with dogType:String){
-        dogLabelContainer.layer.cornerRadius = 5
-        dogLabelContainer.layer.zPosition = 999
-        dogLabelContainer.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+    private func setupLabelView(){
+        dogLabelContainer = UIView()
+        dogLabelContainer?.layer.cornerRadius = 5
+        dogLabelContainer?.layer.zPosition = 999
+        dogLabelContainer?.backgroundColor = UIColor.black.withAlphaComponent(0.7)
+        guard let dogLabelContainer = dogLabelContainer else {return}
         self.view.addSubview(dogLabelContainer)
         dogLabelContainer.snp.makeConstraints { (make) in
             make.centerX.equalTo(self.view)
             make.centerY.equalTo(self.view)
         }
-        
-        self.dogLabelContainer.addSubview(dogTypeLabel)
-        dogTypeLabel.textColor = .white
-        dogTypeLabel.font = dogTypeLabel.font.withSize(20)
+        dogTypeLabel = UILabel()
+        dogTypeLabel?.textColor = .white
+        dogTypeLabel?.font = dogTypeLabel?.font.withSize(20)
+        guard let dogTypeLabel = dogTypeLabel else {return}
+        self.dogLabelContainer?.addSubview(dogTypeLabel)
         dogTypeLabel.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(dogLabelContainer).inset(7.5)
             make.left.right.equalTo(dogLabelContainer).inset(15)
         }
-        dogTypeLabel.text = dogType
-        print(dogType)
-    }
-    
-    private func removeLabelView(){
-        dogTypeLabel.removeFromSuperview()
-        dogLabelContainer.removeFromSuperview()
     }
 }
 
