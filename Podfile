@@ -5,6 +5,7 @@ platform :ios, ‘11.0’
 
 abstract_target 'WD' do
     pod 'SnapKit', '~> 4.0.0'
+    pod 'Fritz', '~> 1.0.0-beta'
 
     target 'WhatDog' do
     end

@@ -22,6 +22,7 @@
 		3D66A4561FEC970D00B252CC /* DogTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66A4551FEC970D00B252CC /* DogTypes.swift */; };
 		3D66A4581FEC999300B252CC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3D66A4571FEC999300B252CC /* Main.storyboard */; };
 		3D66A45C1FECA66200B252CC /* DogClassifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D66A45B1FECA66200B252CC /* DogClassifier.swift */; };
+		5F889F45202957C800C142F4 /* MobileNet+Fritz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F889F44202957C800C142F4 /* MobileNet+Fritz.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		3D66A4571FEC999300B252CC /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		3D66A45B1FECA66200B252CC /* DogClassifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogClassifier.swift; sourceTree = "<group>"; };
 		4EAE1BED4C5F98C83A83ACDE /* Pods-WD-WhatDog.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WD-WhatDog.release.xcconfig"; path = "Pods/Target Support Files/Pods-WD-WhatDog/Pods-WD-WhatDog.release.xcconfig"; sourceTree = "<group>"; };
+		5F889F44202957C800C142F4 /* MobileNet+Fritz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MobileNet+Fritz.swift"; sourceTree = "<group>"; };
 		C40236FCC7DEEC9CB25A0AE5 /* Pods_WD_WhatDog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WD_WhatDog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				3D66A4481FEC484000B252CC /* MobileNet.mlmodel */,
+				5F889F44202957C800C142F4 /* MobileNet+Fritz.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -400,10 +403,12 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-WD-WhatDog/Pods-WD-WhatDog-frameworks.sh",
+				"${PODS_ROOT}/Fritz/Framework/Fritz.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Fritz.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -419,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3D66A4541FEC5F7000B252CC /* AVCapturePreview.swift in Sources */,
+				5F889F45202957C800C142F4 /* MobileNet+Fritz.swift in Sources */,
 				3D66A4491FEC484000B252CC /* MobileNet.mlmodel in Sources */,
 				3D66A44E1FEC57EE00B252CC /* DogRecognizerViewController.swift in Sources */,
 				3D66A4521FEC599800B252CC /* AVFrameExtractor.swift in Sources */,
